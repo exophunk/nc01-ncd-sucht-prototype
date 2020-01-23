@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-image">
+        <figure class="image is-4by3">
+            {% if article.ar_image|length %}
+                <img alt="" src="{{ article.ar_image.one().getUrl('default') }}">
+            {% endif %}
+        </figure>
+    </div>
+    <div class="card-content">
+        <div class="content">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.text|raw|striptags|slice(0, 200) }}&hellip;</p>
+
+            <div class="tags">
+
+                {% for tag in article.tags.all() %}
+                    <span class="tag">
+                        {{ tag }}
+                    </span>
+                {% endfor %}
+
+            </div>
+
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <a aria-label="like" class="level-item">
+                        <span class="icon is-small">
+                            <i aria-hidden="true" class="fas fa-heart"></i>
+                        </span>
+                    </a>
+
+                    {{ craft.upvote.upvote(article.id) }}&nbsp;&nbsp;{{ craft.upvote.tally(article.id) }}
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

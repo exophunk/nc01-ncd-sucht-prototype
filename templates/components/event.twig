@@ -1,0 +1,20 @@
+<div class="box">
+    <article class="">
+
+        <div class="content">
+
+            <h3>{{ event.title }}</h3>
+            <small>{{ event.ev_date|date('d. M Y') }}</small>
+            <br>
+            <p>{{ event.text }}</p>
+
+        </div>
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <a aria-label="like" class="level-item" href="/events/{{ event.slug }}">
+                    Jetzt anmelden
+                </a>
+            </div>
+        </nav>
+    </article>
+</div>

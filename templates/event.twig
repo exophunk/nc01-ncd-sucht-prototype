@@ -1,0 +1,29 @@
+{% extends 'layout' %}
+
+
+{% block main %}
+
+    <a href="/">Zurück</a>
+
+    <h1 class="title is-1">{{ entry.title }}</h1>
+    <small>{{ entry.ev_date|date('d. M Y') }}</small>
+
+    <br><br>
+    
+    <h3 class="title is-3">Jetzt anmelden</h3>
+
+
+    <div class="columns">
+        <div class="column is-half">
+            {{ craft.freeform.form("anmeldeformular").render({
+                relations: {
+                    ev_eventSubmission: entry.id,
+                },
+                overrideValues: {
+                    eventName: entry.title,
+                }
+            }) }}
+
+        </div>
+    </div>
+{% endblock %}
