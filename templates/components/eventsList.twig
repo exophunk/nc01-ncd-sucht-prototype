@@ -1,0 +1,9 @@
+<button class="button is-dark is-medium">Show more</button>
+<br><br>
+<div class="columns is-multiline is-mobile">
+    {% for event in events[:3] %}
+        <div class="column is-one-third">
+            {% include 'components/event.twig' with { event: event } only %}
+        </div>
+    {% endfor %}
+</div>

@@ -7,6 +7,8 @@
         <title>NC01 ncd-sucht Prototyp</title>
 
         <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="/build/app.css">
+
     </head>
     <body>
 
@@ -19,12 +21,15 @@
                                 Startseite
                             </a>
 
-                            <a class="navbar-item" href="/suche">
-                                Suche
+                            <a class="navbar-item" href="/vue-instant-search">
+                                Suche (InstantSearch)
                             </a>
-                            <a class="navbar-item" href="/loginpage"> 
+                            <a class="navbar-item" href="/vanilla-search">
+                                Suche (Vanilla)
+                            </a>
+                            {# <a class="navbar-item" href="/loginpage"> 
                                 Member Login
-                            </a>
+                            </a> #}
                         </div>
                     </div>
                 </nav>
@@ -35,12 +40,20 @@
 
         <main>
 
-            <div class="container"> {% block main %}{% endblock %}
+            <div class="container main"> {% block main %}{% endblock %}
                 </div>
             </main>
 
 
+            <script type="text/javascript">
+                window.env = {{ {
+                    'ALGOLIA_APPLICATION_ID': craft.scout.algoliaApplicationId,
+                    'ALGOLIA_SEARCH_API_KEY': craft.scout.algoliaSearchApiKey,
+                }|json_encode|raw }};
+            </script>
+
             <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+            <script type="text/javascript" src="/build/app.js"></script>
 
         </body>
     </html>

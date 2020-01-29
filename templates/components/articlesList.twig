@@ -1,0 +1,9 @@
+<button class="button is-dark is-medium">Show more</button>
+<br><br>
+<div class="columns is-multiline is-mobile">
+    {% for article in articles[:3] %}
+        <div class="column is-one-third">
+            {% include 'components/article.twig' with { article: article } only %}
+        </div>
+    {% endfor %}
+</div>

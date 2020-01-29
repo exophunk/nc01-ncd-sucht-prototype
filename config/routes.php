@@ -19,7 +19,13 @@
  */
 
 return [
-    'suche' => ['template' => 'search'],
-    'bild-datenbank' => ['template' => 'imageDatabase'],
-    'loginpage' => ['template' => 'login']
+    '' => ['template' => 'pages/index'],
+    'vue-instant-search' => ['template' => 'pages/search/vue-instant-search'],
+    'vanilla-search' => ['template' => 'pages/search/vanilla-search'],
+
+    // This route will be the dynamic base route for all content routes. Based on the query,
+    // the cms will then decide what to search and what to show
+    '<type:.*>/<query:.*>' => ['template' => 'pages/resultWithType'],
+
+    '<query:.*>' => ['template' => 'pages/resultNoType'],
 ];

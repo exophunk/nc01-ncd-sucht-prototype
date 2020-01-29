@@ -1,0 +1,67 @@
+{% extends 'layout' %}
+
+
+{% block main %}
+
+    <h1 class="title is-1">«NCD Sucht OPP Plattform» Prototype</h1>
+    <div class="content is-medium">
+        <p>This prototype shows how to implement different mechanisms of the OPP platform:</p>
+
+        <ul>
+            <li>
+                Search with Algolia
+                <ul>
+                    <li>Show live autocomplete results</li>
+                    <li>Send search query</li>
+                    <li>Update algolia index with Craft CMS content</li>
+                    <li>Show Craft content based on an Algolia search query in the route</li>
+                </ul>
+            </li>
+            <li>Tag Bar</li>
+            <li>Show diffrent content types</li>
+            <li>Personalised content</li>
+        </ul>
+    </div>
+
+
+    <div class="columns">
+		<div class="column is-three-quarters">
+            <div class="notification is-info is-light content">
+                <h3 class="title is-3">Example results</h3>
+                <ul>
+                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Alkoholprävention">Artikel, Alkoholprävention</a></li>
+                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Cannabis">Artikel, Cannabis</a></li>
+                    <li><strong>Nur Suchbegriff (Tag)</strong>: <a href="/Cannabis">Cannabis</a></li>
+                    <li><strong>Spezifischer Suchbegriff</strong>: <a href="/Maecenas pulvinar lobortis">Maecenas pulvinar lobortis</a></li>
+                    <li><strong>Spezifischer Suchbegriff und Tag</strong>: <a href="/Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis">Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>  
+
+
+ 
+
+    <br><br>
+
+    {# Show 6 articles (simply the first 6) #}
+    {% set articles = craft.entries({
+        section: 'articles',
+        limit: 3
+    }).all() %}
+    
+    <h2 class="title is-2">Artikel</h2>
+    {% include "components/articlesList.twig" with { articles: articles } only %}
+
+    
+    
+    {# Show 6 events (simply the first 6) #}
+    {% set events = craft.entries({
+        section: 'events',
+        limit: 3,
+    }).all() %}
+
+    <h2 class="title is-2">Events</h2>
+    {% include "components/eventsList.twig" with { events: events } only %}
+{% endblock %}
