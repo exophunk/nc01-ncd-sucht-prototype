@@ -1,0 +1,28 @@
+# Y7K CLI Config
+
+# Environments:
+# -------------
+#
+# You can define multiple environments here that can be used by the CLI to push & pull database and assets.
+# The host value can be either the domain (xy.y7k.pizza) or the IP (less warnings).
+#
+# Run "y7k db:pull pizza" or "y7k assets:push casa" etc.
+
+environments:
+
+
+  local:
+    host: 127.0.0.1
+    db: nc01
+    dbuser: root
+    dbpassword:
+    storage: web/images
+
+  production:
+    host: 185.46.57.112
+    sshuser: forge
+    db: nc01
+    dbuser: forge
+    path: /home/forge/nc01-ncdsucht-prototype.robertkrieg.dev
+    storage: shared/storage/app/public/images
+
