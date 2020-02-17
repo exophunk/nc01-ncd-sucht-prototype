@@ -17,9 +17,11 @@ export default {
     this.input = document.querySelector('.js-searchField');
     this.debouncedSearch = debounce(this.search.bind(this), 400);
     this.input.addEventListener('input', this.debouncedSearch)
+    this.useAlgoliaResults = window.location.href.includes('algolia-based');
+    this.resultPrefix = this.useAlgoliaResults ? '/algolia-based/results/' : '/craft-based/results/';
 
     document.querySelector('.js-showResults').addEventListener('click', () => {
-      window.location.href = `/${this.input.value}`;
+      window.location.href = this.resultPrefix + this.input.value;
     })
   },
 
@@ -40,29 +42,3 @@ export default {
     });
   }
 }
-
-
-// // only query string
-// index.search({
-//   query: 'query string'
-//   },
-//   (err, { hits } = {}) => {
-//     if (err) throw err;
-
-//     console.log(hits);
-//   }
-// );
-
-// // with params
-// index.search(
-//   {
-//     query: 'query string',
-//     attributesToRetrieve: ['firstname', 'lastname'],
-//     hitsPerPage: 50,
-//   },
-//   (err, { hits } = {}) => {
-//     if (err) throw err;
-
-//     console.log(hits);
-//   }
-// );

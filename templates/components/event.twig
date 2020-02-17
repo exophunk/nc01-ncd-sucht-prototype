@@ -3,7 +3,7 @@
 
         <div class="content">
 
-            <h3>{{ event.title }}</h3>
+            <h3><a href="/event/{{ event.slug }}">{{ event.title }}</a></h3>
             <small>{{ event.ev_date|date('d. M Y') }}</small>
             <br>
             <p>{{ event.text }}</p>

@@ -1,0 +1,35 @@
+{% extends 'layout' %}
+
+
+{% block main %}
+	<h1 class="title is-1">Search Algolia Vanilla</h1>
+	<h2 class="subtitle">With
+		<a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/" target="_blank" rel="noopener noreferrer">Algolia vanilla js queries</a> and Craft Native based results
+	</h2>
+
+	<div class="columns">
+		<div class="column is-two-thirds">
+			<div class="content">
+				<p>This search example shows an autocomplete list of Tags (algolia index dev_TAGS). 
+				Implemented in vanilla JS with no framework. It uses the basic algolia API to show results. (It's recommended to use their frontend tools though).
+				By clicking on a tag, you will see <strong>Craft Native based results</strong>.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="field">
+		<input class="js-searchField input is-medium is-rounded" name="query" placeholder="Suche..." type="text">
+	</div>
+
+	<div class="field">
+		<input class="button is-link js-showResults" type="submit" value="Show results">
+	</div>
+
+
+	<div class="js-results results columns is-mobile is-multiline">
+	</div>
+
+
+{% endblock %}

@@ -20,12 +20,17 @@
 
 return [
     '' => ['template' => 'pages/index'],
-    'vue-instant-search' => ['template' => 'pages/search/vue-instant-search'],
-    'vanilla-search' => ['template' => 'pages/search/vanilla-search'],
+    
 
-    // This route will be the dynamic base route for all content routes. Based on the query,
-    // the cms will then decide what to search and what to show
-    '<type:.*>/<query:.*>' => ['template' => 'pages/resultWithType'],
+    // ALGOLIA BASED
+    'algolia-based/algolia-vue-instant-search' => ['template' => 'pages/algolia-based/search/algolia-vue-instant-search'],
+    'algolia-based/algolia-vanilla-search' => ['template' => 'pages/algolia-based/search/algolia-vanilla-search'],
+    'algolia-based/results/<type:.*>/<query:.*>' => ['template' => 'pages/algolia-based/resultpages/algolia-result-with-type'],
+    'algolia-based/results/<query:.*>' => ['template' => 'pages/algolia-based/resultpages/algolia-result-no-type'],
 
-    '<query:.*>' => ['template' => 'pages/resultNoType'],
+    // CRAFT NATIVE BASED
+    'craft-based/algolia-vue-instant-search' => ['template' => 'pages/craft-based/search/algolia-vue-instant-search'],
+    'craft-based/algolia-vanilla-search' => ['template' => 'pages/craft-based/search/algolia-vanilla-search'],
+    'craft-based/results/<type:.*>/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-with-type'],
+    'craft-based/results/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-no-type'],
 ];

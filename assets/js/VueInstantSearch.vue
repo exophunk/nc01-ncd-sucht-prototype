@@ -15,7 +15,7 @@
       <ais-hits>
         <template slot="item" slot-scope="{ item }">
           <h3>
-            <a :href="'/' + item.name">
+            <a :href="resultPrefix + item.name">
               <ais-highlight :hit="item" attribute="name" />
             </a>
           </h3>
@@ -36,7 +36,17 @@
       <h2 class="title is-2">Inhalte</h2>
       <ais-hits>
         <template slot="item" slot-scope="{ item }">
-          <h3><ais-highlight :hit="item" attribute="title" /></h3>
+          <h3>
+            <a :href="'/article/' + item.slug">
+              <ais-highlight :hit="item" attribute="title" />    
+            </a>
+          </h3>
+          <p v-if="item.text">{{ item.text.substr(0, 100) }}</p>
+
+          <br>
+          <ul class="tags">
+            <li class="tag" v-for="tag in item.tags" :key="tag">{{ tag }}</li>
+          </ul>
         </template>
       </ais-hits>
     </ais-instant-search>
@@ -55,7 +65,19 @@ export default {
         window.env.ALGOLIA_SEARCH_API_KEY,
       ),
       query: '',
+
+      useAlgoliaResults: false,
     };
+  },
+
+  computed: {
+    resultPrefix() {
+      return this.useAlgoliaResults ? '/algolia-based/results/' : '/craft-based/results/';
+    }
+  },
+
+  mounted() {
+    this.useAlgoliaResults = window.location.href.includes('algolia-based');
   },
 };
 </script>

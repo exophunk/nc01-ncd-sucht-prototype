@@ -21,12 +21,32 @@
                                 Startseite
                             </a>
 
-                            <a class="navbar-item" href="/vue-instant-search">
-                                Suche (InstantSearch)
-                            </a>
-                            <a class="navbar-item" href="/vanilla-search">
-                                Suche (Vanilla)
-                            </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">V1: Algolia Results</a>
+
+                                <div class="navbar-dropdown">
+                                    <a href="/algolia-based/algolia-vue-instant-search" class="navbar-item">Search (Vue Instant-Search)</a>
+                                    <a href="/algolia-based/algolia-vanilla-search" class="navbar-item">Search (Algolia Vanilla JS)</a>
+                                    <hr class="navbar-divider">
+                                    <a href="/algolia-based/results/articles/Alkoholprävention" class="navbar-item">Result Example: Articles + Alkoholprävention</a>
+                                    <a href="/algolia-based/results/events/Cannabis" class="navbar-item">Result Example: Events + Cannabis</a>
+                                    <a href="/algolia-based/results/Cannabis" class="navbar-item">Result Example: Cannabis</a>
+                                </div>
+                            </div>
+
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">V1: Craft Native Results</a>
+
+                                <div class="navbar-dropdown">
+                                    <a href="/craft-based/algolia-vue-instant-search" class="navbar-item">Search (Vue Instant-Search)</a>
+                                    <a href="/craft-based/algolia-vanilla-search" class="navbar-item">Search (Algolia Vanilla JS)</a>
+                                    <hr class="navbar-divider">
+                                    <a href="/craft-based/results/articles/Alkoholprävention" class="navbar-item">Example: Articles + Alkoholprävention</a>
+                                    <a href="" class="navbar-item">Example: Events + Cannabis</a>
+                                    <a href="" class="navbar-item">Example: Cannabis</a>
+                                </div>
+                            </div>
+
                             {# <a class="navbar-item" href="/loginpage"> 
                                 Member Login
                             </a> #}

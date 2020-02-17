@@ -1,0 +1,25 @@
+{% extends 'layout' %}
+
+
+{% block main %}
+
+
+	<h1 class="title is-1">Search Algolia Instantsearch</h1>
+	<h2 class="subtitle">With
+		<a href="https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/vue/" target="_blank" rel="noopener noreferrer">Algolia Vue Instantsearch</a> and Algolia based results
+	</h2>
+
+	<div class="columns">
+		<div class="column is-two-thirds">
+			<div class="content">
+				<p>This search page works with algolia instant search (Vue implementation) to quickly 
+				create a search experience with autocomplete. This example simultaniously searches two indexes 
+				at the same time: Tags & Content (Articles, Events etc.). By clicking on a tag, you will see <strong>All-Algolia based results</strong>.</p>
+			</div>
+		</div>
+	</div>
+
+	{# Container for Vue component #}
+	<div id="vue-instant-search"></div>
+
+{% endblock %}

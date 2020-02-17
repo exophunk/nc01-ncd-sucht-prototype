@@ -13,15 +13,12 @@ import vanillaSearch from './vanillaSearch';
 
 Vue.use(InstantSearch);
 
-
-
 if (window.location.href.includes('vue-instant-search')) {
   new Vue({
     el: '#vue-instant-search',
     render: h => h(VueInstantSearch),
   });
 }
- 
 
 if (window.location.href.includes('vanilla-search')) {
   vanillaSearch.init();

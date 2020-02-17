@@ -67,7 +67,7 @@ return [
      * by using the \rias\scout\ScoutIndex::create('IndexName') command. Each
      * index should define an ElementType, criteria and a transformer.
      */
-    'indices'       => [
+    'indices' => [
         ScoutIndex::create('dev_TAGS') 
             ->elementType(Tag::class)
             ->criteria(
@@ -102,6 +102,7 @@ return [
                         'title' => $entry->title,
                         'type' => $entry->type->handle,
                         'text' => $entry->text,
+                        'slug' => $entry->slug,
                         'tags' => $tags,
                     ];
                 }

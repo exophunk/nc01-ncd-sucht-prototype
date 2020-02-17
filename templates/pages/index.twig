@@ -3,65 +3,54 @@
 
 {% block main %}
 
-    <h1 class="title is-1">«NCD Sucht OPP Plattform» Prototype</h1>
-    <div class="content is-medium">
-        <p>This prototype shows how to implement different mechanisms of the OPP platform:</p>
-
-        <ul>
-            <li>
-                Search with Algolia
-                <ul>
-                    <li>Show live autocomplete results</li>
-                    <li>Send search query</li>
-                    <li>Update algolia index with Craft CMS content</li>
-                    <li>Show Craft content based on an Algolia search query in the route</li>
-                </ul>
-            </li>
-            <li>Tag Bar</li>
-            <li>Show diffrent content types</li>
-            <li>Personalised content</li>
-        </ul>
-    </div>
+	<h1 class="title is-1">NCD Sucht Prototype</h1>
+	<div class="content is-medium">
+		<p>This prototype shows how to implement different mechanisms of the OPP platform:</p>
 
 
-    <div class="columns">
-		<div class="column is-three-quarters">
-            <div class="notification is-info is-light content">
-                <h3 class="title is-3">Example results</h3>
-                <ul>
-                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Alkoholprävention">Artikel, Alkoholprävention</a></li>
-                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Cannabis">Artikel, Cannabis</a></li>
-                    <li><strong>Nur Suchbegriff (Tag)</strong>: <a href="/Cannabis">Cannabis</a></li>
-                    <li><strong>Spezifischer Suchbegriff</strong>: <a href="/Maecenas pulvinar lobortis">Maecenas pulvinar lobortis</a></li>
-                    <li><strong>Spezifischer Suchbegriff und Tag</strong>: <a href="/Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis">Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis</a></li>
-                    
-                </ul>
-            </div>
-        </div>
-    </div>  
+		<div class="columns">
+			<div class="column">
+				<div class="box">
+					<h2 class="is-size-4">Algolia Instant Search</h2>
+					<p>Show live autocomplete results while typing in the search bar. This is used for instant search feedback. It will use Algolia for that, on both search variants.</p>
+				</div>
+			</div>
+			<div class="column">
+				<div class="box">
+					<h2 class="is-size-4">Variant 1: Algolia</h2>
+					<p>In this example, everything is based on Algolia. Every result page (.eg.
+						<code>/articles/alcohol</code>) will fire off an Algolia search request and will then show the results for it. 
+                        This provides all power of Algolia but will result in a Algolia request for <strong>every</strong>
+						single action of a user on a page. The limit will be hit quickly without caching strategies.</p>
+                        <a href="/algolia-based/algolia-vue-instant-search" class="button is-primary">Search</a>
+
+				</div>
+			</div>
+			<div class="column">
+				<div class="box">
+					<h2 class="is-size-4">Variant 2: Craft CMS Native</h2>
+					<p>In this example, Algolia is only used for the autocomplete in the search bar and result pages are based on native Craft CMS. 
+                    While this doesn't allow for all expert features  of Algolia, it is a much simpler, robust and risk-free approach.</p>
+                    <a href="/craft-based/algolia-vue-instant-search" class="button is-primary">Search</a>
+				</div>
+			</div>
+		</div>
+
+		{# <div class="columns">
+									<div class="column is-three-quarters">
+							            <div class="notification is-info is-light content">
+							                <h3 class="title is-3">Example results</h3>
+							                <ul>
+							                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Alkoholprävention">Artikel, Alkoholprävention</a></li>
+							                    <li><strong>Typ + Suchbegriff</strong>: <a href="/articles/Cannabis">Artikel, Cannabis</a></li>
+							                    <li><strong>Nur Suchbegriff (Tag)</strong>: <a href="/Cannabis">Cannabis</a></li>
+							                    <li><strong>Spezifischer Suchbegriff</strong>: <a href="/Maecenas pulvinar lobortis">Maecenas pulvinar lobortis</a></li>
+							                    <li><strong>Spezifischer Suchbegriff und Tag</strong>: <a href="/Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis">Enquiring Minds: The Untold Story of the Man Behind the National Enquirer Cannabis</a></li>
+							                    
+							                </ul>
+							            </div>
+							        </div>
+							    </div>   #}
 
 
- 
-
-    <br><br>
-
-    {# Show 6 articles (simply the first 6) #}
-    {% set articles = craft.entries({
-        section: 'articles',
-        limit: 3
-    }).all() %}
-    
-    <h2 class="title is-2">Artikel</h2>
-    {% include "components/articlesList.twig" with { articles: articles } only %}
-
-    
-    
-    {# Show 6 events (simply the first 6) #}
-    {% set events = craft.entries({
-        section: 'events',
-        limit: 3,
-    }).all() %}
-
-    <h2 class="title is-2">Events</h2>
-    {% include "components/eventsList.twig" with { events: events } only %}
-{% endblock %}
+	{% endblock %}
