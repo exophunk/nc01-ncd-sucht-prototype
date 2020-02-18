@@ -33,4 +33,6 @@ return [
     'craft-based/algolia-vanilla-search' => ['template' => 'pages/craft-based/search/algolia-vanilla-search'],
     'craft-based/results/<type:.*>/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-with-type'],
     'craft-based/results/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-no-type'],
+
+    'tagbar' => ['template' => 'pages/tagbar/index'],
 ];

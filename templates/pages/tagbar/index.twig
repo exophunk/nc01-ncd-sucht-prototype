@@ -1,0 +1,72 @@
+{% extends 'layout' %}
+
+{% block main %}
+
+    {% set tag = craft.tags.search('Alkohol').first() %}
+
+    {% set articles = craft.entries({
+        section: 'articles',
+        limit: 6,
+        relatedTo: tag,
+    }).all() %}
+
+    {% set relatedTopics = craft.tags({
+        relatedTo: articles,
+    }) %}
+
+    {% set relatedOrganisations = craft.entries({
+        section: 'organisations',
+        relatedTo: articles,
+    }) %}
+
+
+
+
+
+	<h1 class="title is-1">Tagbar Example</h1>
+	<div class="content is-medium">
+		<p class="">This page shows how you can load related tags for a tagbar component.</p>
+    </div>
+
+    <div class="content">
+        <p>What this example does is, it loads all <strong>Tags</strong> and <strong>Content types</strong> 
+        of the displayed articles and shows them in a tag bar. As the tag bar will probably be implemented with javascript, I've used the Craft Elements API to return the list and it is shown with Vue in the frontend</p>
+    </div>
+
+
+    <hr>
+
+    <div class="field">
+		<input class="input is-medium is-rounded" name="query" placeholder="Suche..." type="text">
+	</div>
+
+
+    <div class="tagbar">
+        <div class="tags"></div>
+        {% for topic in relatedTopics %}
+            <div class="tag is-primary is-large">{{ topic.title }}</div>
+        {% endfor %}
+
+        {% for organisation in relatedOrganisations %}
+            <div class="tag is-success is-large">@{{ organisation.title }}</div>
+        {% endfor %}
+    </div>
+
+
+
+    <hr>
+    <div class="content">
+        <h2>Example articles</h2>
+    </div>
+
+    <div class="columns is-multiline is-mobile">
+    {% for article in articles %}
+        <div class="column is-one-third">
+            {% include 'components/article.twig' with { article: article } only %}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+	{% endblock %}

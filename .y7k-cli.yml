@@ -24,5 +24,5 @@ environments:
     db: nc01
     dbuser: forge
     path: /home/forge/nc01-ncdsucht-prototype.robertkrieg.dev
-    storage: shared/storage/app/public/images
+    storage: shared/storage/app/public/
 
