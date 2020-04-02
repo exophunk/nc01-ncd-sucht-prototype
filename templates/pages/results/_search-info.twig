@@ -1,0 +1,23 @@
+<table class="table is-striped is-fullwidth">
+	<colgroup>
+		<col width="15%">
+		<col width="35%">
+		<col width="20%">
+		<col width="30%">
+	</colgroup>
+	<tbody>
+		<tr>
+			<th>Entry Type</th>
+			<th>Categories</th>
+			<th>Organisation</th>
+			<th>Search Query</th>
+		</tr>
+		<tr>
+			<td><code>{{ entryType is defined ? entryType : '–' }}</code></td>
+			
+			<td><code>{{ craft.request.getParam('categories') }}</td>
+			<td>{{ craft.request.getParam('organisation') }}</td>
+			<td>{{ craft.request.getParam('search') }}</td>
+		</tr>
+	</tbody>
+</table>

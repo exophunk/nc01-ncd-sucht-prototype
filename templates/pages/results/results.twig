@@ -1,0 +1,53 @@
+
+
+<div class="notification is-primary">
+    This result page shows all content types (grouped)
+</div>
+
+{% set search = craft.request.getParam('search') %}
+{% set catTerms = craft.request.getParam('categories') ? craft.request.getParam('categories')|split(',') : null %}
+{% set foundCategories = [] %}
+
+{% if catTerms %}
+    {# 1. Search in all categories with all terms. #}
+    {% for catTerm in catTerms %}
+        {% set categories = craft.categories({
+            search: catTerm
+        }).all() %}
+        
+        {% if categories %}
+            {# 2. Combine all found categories into one list #}
+            {% set foundCategories = foundCategories|merge(categories) %}    
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+{# 3. Search for articles that are related to ALL of the categories ('and') #}
+{% set articles = craft.entries({
+    section: 'articles',
+    search: search,
+    relatedTo: foundCategories|length ? { targetElement: ['and']|merge(foundCategories)} : null,
+}) %}
+
+{% if articles|length %} 
+    <div class="box">
+        <h3 class="title is-3">Artikel</h3>
+        {% include "components/articlesList.twig" with { articles: articles } only %}
+    </div>
+{% endif %}
+
+
+{# 3. Search for events that are related to ALL of the categories ('and') #}
+{% set events = craft.entries({
+    section: 'events',
+    search: search,
+    relatedTo: foundCategories|length ? { targetElement: ['and']|merge(foundCategories)} : null,
+}) %}
+
+{% if events|length %} 
+    <div class="box">
+        <h3 class="title is-3">Events</h3>
+        {% include "components/eventsList.twig" with { events: events } only %}
+    </div>
+{% endif %}

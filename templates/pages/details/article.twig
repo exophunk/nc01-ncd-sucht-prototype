@@ -8,16 +8,29 @@
 
     <div class="content">
         <h1 class="title is-1">{{ entry.title }}</h1>
-        <p>{{ entry.text}}</p>
+        <p>{{ entry.text }}</p>
     </div>
 
     <div class="tags">
 
-        {% for tag in entry.tags.all() %}
-            <span class="tag">
-                {{ tag }}
+        {% for topic in entry.topics.all() %}
+            <span class="tag is-success">
+                {{ topic }}
+            </span>
+        {% endfor %}
+
+        {% for phaseOfLife in entry.phasesOfLife.all() %}
+            <span class="tag is-info">
+                {{ phaseOfLife }}
+            </span>
+        {% endfor %}
+
+        {% for region in entry.regions.all() %}
+            <span class="tag is-warning">
+                {{ region }}
             </span>
         {% endfor %}
 
     </div>
+
 {% endblock %}

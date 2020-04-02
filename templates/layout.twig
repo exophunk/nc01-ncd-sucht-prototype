@@ -22,28 +22,32 @@
                             </a>
 
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">V1: Algolia Results</a>
+                                <a class="navbar-link">Algolia Autocomplete</a>
 
                                 <div class="navbar-dropdown">
-                                    <a href="/algolia-based/algolia-vue-instant-search" class="navbar-item">Search (Vue Instant-Search)</a>
-                                    <a href="/algolia-based/algolia-vanilla-search" class="navbar-item">Search (Algolia Vanilla JS)</a>
-                                    <hr class="navbar-divider">
-                                    <a href="/algolia-based/results/articles/Alkoholprävention" class="navbar-item">Result Example: Articles + Alkoholprävention</a>
-                                    <a href="/algolia-based/results/events/Cannabis" class="navbar-item">Result Example: Events + Cannabis</a>
-                                    <a href="/algolia-based/results/Cannabis" class="navbar-item">Result Example: Cannabis</a>
+                                    <a href="/algolia/algolia-vue-instant-search" class="navbar-item">Search (Vue Instant-Search)</a>
+                                    <a href="/algolia/algolia-vanilla-search" class="navbar-item">Search (Algolia Vanilla JS)</a>
                                 </div>
                             </div>
 
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">V1: Craft Native Results</a>
+                                <a class="navbar-link">Result Pages</a>
 
                                 <div class="navbar-dropdown">
-                                    <a href="/craft-based/algolia-vue-instant-search" class="navbar-item">Search (Vue Instant-Search)</a>
-                                    <a href="/craft-based/algolia-vanilla-search" class="navbar-item">Search (Algolia Vanilla JS)</a>
+                                    <a href="/results/article" class="navbar-item">Type:article</a>
                                     <hr class="navbar-divider">
-                                    <a href="/craft-based/results/articles/Alkoholprävention" class="navbar-item">Example: Articles + Alkoholprävention</a>
-                                    <a href="" class="navbar-item">Example: Events + Cannabis</a>
-                                    <a href="" class="navbar-item">Example: Cannabis</a>
+
+                                    <a href="/results/article?categories=Alkohol" class="navbar-item">Type:article + #Alkohol</a>
+                                    <a href="/results/article?categories=Cannabis" class="navbar-item">Type:article + #Cannabis</a>
+                                    <a href="/results/article?categories=Alkohol,Alter" class="navbar-item">Type:article + #Alkohol + #Alter</a>
+                                    <a href="/results/article?search=Trinkverhalten+2019" class="navbar-item">Type:article + Trinkverhalten 2019 (Free text search)</a>
+                                    <hr class="navbar-divider">
+                                    <a href="/results/?categories=Alkohol,Alter" class="navbar-item">#Alkohol + #Alter (No type)</a>
+                                    <hr class="navbar-divider">
+                                    <a href="/results/event?categories=Alkohol" class="navbar-item">Type:event + #Alkohol</a>
+                                    <a href="/results/event?categories=Jugend" class="navbar-item">Type:event + #Jugend</a>
+                                    <a href="/results/event?categories=Schaffhausen" class="navbar-item">Type:event + #schaffhausen</a>
+                                    
                                 </div>
                             </div>
 

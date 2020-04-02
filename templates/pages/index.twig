@@ -5,7 +5,7 @@
 
 	<h1 class="title is-1">NCD Sucht Prototype</h1>
 	<div class="content is-medium">
-		<p>This prototype shows how to implement different mechanisms of the OPP platform.</p>
+		<p>This prototype shows how to implement different mechanisms of the ncd-sucht platform.</p>
 		<p>It is based on Craft CMS. Some «Test Content» Articles were loaded into the sections articles and events.</p>
 
 
@@ -18,21 +18,9 @@
 			</div>
 			<div class="column">
 				<div class="box">
-					<h2 class="is-size-4">Variant 1: Algolia</h2>
-					<p>In this example, everything is based on Algolia. Every result page (.eg.
-						<code>/articles/alcohol</code>) will fire off an Algolia search request and will then show the results for it. 
-                        This provides all power of Algolia but will result in a Algolia request for <strong>every</strong>
-						single action of a user on a page. The limit will be hit quickly without caching strategies.</p>
-                        <a href="/algolia-based/algolia-vue-instant-search" class="button is-primary">Search</a>
+					<h2 class="is-size-4">Search Result Pages</h2>
+					<p>In this example, the mechanism of selecting the right search result page is explained.</p>
 
-				</div>
-			</div>
-			<div class="column">
-				<div class="box">
-					<h2 class="is-size-4">Variant 2: Craft CMS Native</h2>
-					<p>In this example, Algolia is only used for the autocomplete in the search bar and result pages are based on native Craft CMS. 
-                    While this doesn't allow for all expert features  of Algolia, it is a much simpler, robust and risk-free approach.</p>
-                    <a href="/craft-based/algolia-vue-instant-search" class="button is-primary">Search</a>
 				</div>
 			</div>
 		</div>

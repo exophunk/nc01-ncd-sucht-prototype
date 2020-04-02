@@ -5,8 +5,29 @@
 
             <h3><a href="/event/{{ event.slug }}">{{ event.title }}</a></h3>
             <small>{{ event.ev_date|date('d. M Y') }}</small>
-            <br>
-            <p>{{ event.text }}</p>
+
+
+            <div class="tags">
+
+                {% for topic in event.topics.all() %}
+                    <span class="tag is-success">
+                        {{ topic }}
+                    </span>
+                {% endfor %}
+
+                {% for phaseOfLife in event.phasesOfLife.all() %}
+                    <span class="tag is-info">
+                        {{ phaseOfLife }}
+                    </span>
+                {% endfor %}
+
+                {% for region in event.regions.all() %}
+                    <span class="tag is-warning">
+                        {{ region }}
+                    </span>
+                {% endfor %}
+
+            </div>
 
         </div>
         <nav class="level is-mobile">

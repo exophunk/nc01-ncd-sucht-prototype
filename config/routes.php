@@ -22,17 +22,13 @@ return [
     '' => ['template' => 'pages/index'],
     
 
-    // ALGOLIA BASED
-    'algolia-based/algolia-vue-instant-search' => ['template' => 'pages/algolia-based/search/algolia-vue-instant-search'],
-    'algolia-based/algolia-vanilla-search' => ['template' => 'pages/algolia-based/search/algolia-vanilla-search'],
-    'algolia-based/results/<type:.*>/<query:.*>' => ['template' => 'pages/algolia-based/resultpages/algolia-result-with-type'],
-    'algolia-based/results/<query:.*>' => ['template' => 'pages/algolia-based/resultpages/algolia-result-no-type'],
+    // Algolia Frontend Search
+    'algolia/algolia-vue-instant-search' => ['template' => 'pages/algolia/search/algolia-vue-instant-search'],
+    'algolia/algolia-vanilla-search' => ['template' => 'pages/algolia/search/algolia-vanilla-search'],
 
-    // CRAFT NATIVE BASED
-    'craft-based/algolia-vue-instant-search' => ['template' => 'pages/craft-based/search/algolia-vue-instant-search'],
-    'craft-based/algolia-vanilla-search' => ['template' => 'pages/craft-based/search/algolia-vanilla-search'],
-    'craft-based/results/<type:.*>/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-with-type'],
-    'craft-based/results/<query:.*>' => ['template' => 'pages/craft-based/resultpages/craft-result-no-type'],
+    // Result Pages
+    '/results/<entryType:.*>' => ['template' => 'pages/results/_index'],
+    '/results/' => ['template' => 'pages/results/_index'],
 
     'tagbar' => ['template' => 'pages/tagbar/index'],
 ];

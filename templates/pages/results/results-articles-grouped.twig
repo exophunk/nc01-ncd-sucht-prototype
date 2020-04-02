@@ -1,0 +1,31 @@
+
+
+<div class="notification is-primary">
+    This result page shows articles and groups them by "Article Type" category.
+</div>
+
+{% set search = craft.request.getParam('search') %}
+
+
+{% set articleTypes = craft.categories({
+    group: 'articleTypes'
+}) %}
+
+
+{% for articleType in articleTypes %}
+    
+    {% set articles = craft.entries({
+        section: 'articles',
+        search: search,
+        relatedTo: articleType,
+    }) %}
+    
+    {% if articles|length %} 
+        <div class="box">
+            <h3 class="title is-3">{{ articleType.title }}</h3>
+            {% include "components/articlesList.twig" with { articles: articles } only %}
+        </div>
+        <br><br>
+    {% endif %}
+{% endfor %}
+

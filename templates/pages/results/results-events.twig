@@ -1,0 +1,38 @@
+<div class="notification is-primary">
+    This result page shows events, together with a category search
+</div>
+
+
+
+{% set search = craft.request.getParam('search') %}
+{% set catTerms = craft.request.getParam('categories') ? craft.request.getParam('categories')|split(',') : null %}
+{% set foundCategories = [] %}
+
+{% if catTerms %}
+    {# 1. Search in all categories with all terms. #}
+    {% for catTerm in catTerms %}
+        {% set categories = craft.categories({
+            search: catTerm
+        }).all() %}
+        
+        {% if categories %}
+            {# 2. Combine all found categories into one list #}
+            {% set foundCategories = foundCategories|merge(categories) %}    
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+
+
+{# 3. Search for events that are related to ALL of the categories ('and') #}
+{% set events = craft.entries({
+    section: 'events',
+    search: search,
+    relatedTo: foundCategories|length ? { targetElement: ['and']|merge(foundCategories)} : null,
+}) %}
+
+{% if events|length %} 
+    <h3 class="title is-3">Events, {{ craft.request.getParam('categories') }}</h3>
+    {% include "components/eventsList.twig" with { events: events } only %}
+{% endif %}

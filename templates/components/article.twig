@@ -15,9 +15,21 @@
 
             <div class="tags">
 
-                {% for tag in article.tags.all() %}
-                    <span class="tag">
-                        {{ tag }}
+                {% for topic in article.topics.all() %}
+                    <span class="tag is-success">
+                        {{ topic }}
+                    </span>
+                {% endfor %}
+
+                {% for phaseOfLife in article.phasesOfLife.all() %}
+                    <span class="tag is-info">
+                        {{ phaseOfLife }}
+                    </span>
+                {% endfor %}
+
+                {% for region in article.regions.all() %}
+                    <span class="tag is-warning">
+                        {{ region }}
                     </span>
                 {% endfor %}
 

@@ -9,21 +9,27 @@
     <small>{{ entry.ev_date|date('d. M Y') }}</small>
 
     <br><br>
-    
-    <h3 class="title is-3">Jetzt anmelden</h3>
 
+    <div class="tags">
 
-    <div class="columns">
-        <div class="column is-half">
-            {{ craft.freeform.form("anmeldeformular").render({
-                relations: {
-                    ev_eventSubmission: entry.id,
-                },
-                overrideValues: {
-                    eventName: entry.title,
-                }
-            }) }}
+        {% for topic in entry.topics.all() %}
+            <span class="tag is-success">
+                {{ topic }}
+            </span>
+        {% endfor %}
 
-        </div>
+        {% for phaseOfLife in entry.phasesOfLife.all() %}
+            <span class="tag is-info">
+                {{ phaseOfLife }}
+            </span>
+        {% endfor %}
+
+        {% for region in entry.regions.all() %}
+            <span class="tag is-warning">
+                {{ region }}
+            </span>
+        {% endfor %}
+
     </div>
+    
 {% endblock %}

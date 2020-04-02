@@ -1,0 +1,73 @@
+{% extends 'layout' %}
+
+
+{% block main %}
+
+
+	{% set categories = craft.request.getParam('categories') %}
+	{% set organisation = craft.request.getParam('organisation') %}
+	{% set search = craft.request.getParam('search') %}
+
+	{% if entryType is defined %}
+		{% if entryType == 'article' %}
+			{% if categories|length %}
+				{% set resultTemplate = '/pages/results/results-articles' %}
+			{% else %}
+				{% set resultTemplate = '/pages/results/results-articles-grouped' %}
+			{% endif %}
+		{% elseif entryType == 'event' %} 
+			{% set resultTemplate = '/pages/results/results-events' %}
+		{% endif %}
+	{% else %}
+		{% set resultTemplate = '/pages/results/results' %}
+	{% endif %}
+
+
+
+	
+
+
+
+
+	<h1 class="title is-1">Search Results</h1>
+	<div class="box">
+		{% include "pages/results/_search-info" %}
+	</div>
+
+	<div class="box">
+		<strong>Result template determination</strong>: <code>{{ resultTemplate }}</code>
+	</div>
+	
+
+	<h2 class="title is-4">Results:</h2>
+
+
+	{% include resultTemplate %}
+
+
+	{# {% set articles = craft.entries({
+		search: query
+	}) %}
+	
+	{% set events = craft.entries({
+		search: query
+	}) %}
+
+	
+
+	{% if articles|length %} 
+		<h3 class="title is-3">Artikel</h3>
+		{% include "components/articlesList.twig" with { articles: articles } only %}
+	{% endif %}
+
+	<br><br>
+
+	{% if events|length %}
+		<h3 class="title is-3">Events</h3>
+		{% include "components/eventsList.twig" with { events: events } only %}
+	{% endif %} #}
+	
+
+
+
+{% endblock %}
