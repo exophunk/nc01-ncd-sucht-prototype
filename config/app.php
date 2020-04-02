@@ -18,8 +18,9 @@
  */
 
 return [
-    'modules' => [
-        'my-module' => \modules\Module::class,
+    'components' => [
+        'fields' => [
+            'class' => 'thejoshsmith\fabpermissions\services\Fields',
+        ],
     ],
-    //'bootstrap' => ['my-module'],
 ];
