@@ -14,9 +14,9 @@
  */
 
 use craft\elements\db\EntryQuery;
-use craft\elements\db\TagQuery;
+use craft\elements\db\CategoryQuery;
 use craft\elements\Entry;
-use craft\elements\Tag;
+use craft\elements\Category;
 use rias\scout\ScoutIndex;
 
 return [
@@ -68,21 +68,21 @@ return [
      * index should define an ElementType, criteria and a transformer.
      */
     'indices' => [
-        ScoutIndex::create('dev_TAGS') 
-            ->elementType(Tag::class)
+        ScoutIndex::create('Search Terms') 
+            ->elementType(Category::class)
             ->criteria(
-                function (TagQuery $query) {
-                    return $query->group('articles'); 
+                function (CategoryQuery $query) {
+                    return $query; 
                 }
             )
             ->transformer(
-                function (Tag $tag) {
+                function (Category $category) {
                     return [
-                        'name' => $tag->title
+                        'name' => $category->title
                     ];
                 }
             ),
-        ScoutIndex::create('dev_CONTENT') 
+        ScoutIndex::create('Content') 
             ->elementType(Entry::class)
             ->criteria(
                 function (EntryQuery $query) {
@@ -91,11 +91,18 @@ return [
             )
             ->transformer(
                 function (Entry $entry) {
-                    $tags = array_map(
-                        function ($tag) {
-                            return $tag->title;
+                    $topics = array_map(
+                        function ($topic) {
+                            return $topic->title;
                         }, 
-                        $entry->tags->all()
+                        $entry->topics->all()
+                    );
+
+                    $regions = array_map(
+                        function ($region) {
+                            return $region->title;
+                        }, 
+                        $entry->regions->all()
                     );
 
                     return [
@@ -103,7 +110,8 @@ return [
                         'type' => $entry->type->handle,
                         'text' => $entry->text,
                         'slug' => $entry->slug,
-                        'tags' => $tags,
+                        'topics' => $topics,
+                        'regions' => $regions,
                     ];
                 }
             ),

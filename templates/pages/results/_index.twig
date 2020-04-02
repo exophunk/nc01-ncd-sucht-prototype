@@ -9,13 +9,13 @@
 	{% set search = craft.request.getParam('search') %}
 
 	{% if entryType is defined %}
-		{% if entryType == 'article' %}
+		{% if entryType == 'articles' %}
 			{% if categories|length %}
 				{% set resultTemplate = '/pages/results/results-articles' %}
 			{% else %}
 				{% set resultTemplate = '/pages/results/results-articles-grouped' %}
 			{% endif %}
-		{% elseif entryType == 'event' %} 
+		{% elseif entryType == 'events' %} 
 			{% set resultTemplate = '/pages/results/results-events' %}
 		{% endif %}
 	{% else %}

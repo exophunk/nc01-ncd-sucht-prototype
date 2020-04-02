@@ -2,7 +2,7 @@
 <div>
     <ais-instant-search
       :search-client="searchClient"
-      index-name="dev_TAGS"
+      index-name="Search Terms"
     >
       <ais-search-box v-model="query" />
 
@@ -11,12 +11,12 @@
       />
 
       <br>
-      <h2 class="title is-2">Tags</h2>
+      <h2 class="title is-2">Search Terms</h2>
       <ais-hits>
         <template slot="item" slot-scope="{ item }">
           <h3>
-            <a :href="resultPrefix + item.name">
-              <ais-highlight :hit="item" attribute="name" />
+            <a :href="`/results/?categories=${item.name}`">
+              {{ item.name }}
             </a>
           </h3>
         </template>
@@ -26,7 +26,7 @@
     <hr />
     <ais-instant-search
       :search-client="searchClient"
-      index-name="dev_CONTENT"
+      index-name="Content"
     >
       <ais-configure
         :query="query"
@@ -37,15 +37,15 @@
       <ais-hits>
         <template slot="item" slot-scope="{ item }">
           <h3>
-            <a :href="'/article/' + item.slug">
-              <ais-highlight :hit="item" attribute="title" />    
+            <a :href="`/${item.type}/${item.slug}`">
+              {{ item.title }}
             </a>
           </h3>
-          <p v-if="item.text">{{ item.text.substr(0, 100) }}</p>
+          <p v-if="item.text" v-html="item.text.substr(0, 100)"></p>
 
           <br>
-          <ul class="tags">
-            <li class="tag" v-for="tag in item.tags" :key="tag">{{ tag }}</li>
+          <ul class="topics">
+            <li class="tag" v-for="topic in item.topics" :key="topic">{{ topic }}</li>
           </ul>
         </template>
       </ais-hits>
@@ -71,9 +71,7 @@ export default {
   },
 
   computed: {
-    resultPrefix() {
-      return this.useAlgoliaResults ? '/algolia-based/results/' : '/craft-based/results/';
-    }
+
   },
 
   mounted() {

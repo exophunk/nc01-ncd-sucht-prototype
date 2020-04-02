@@ -23,6 +23,6 @@ environments:
     sshuser: forge
     db: nc01
     dbuser: forge
-    path: /home/forge/nc01-ncdsucht-prototype.robertkrieg.dev
+    path: /home/forge/nc01-ncd-sucht-prototype.robertkrieg.dev
     storage: shared/storage/app/public/
 

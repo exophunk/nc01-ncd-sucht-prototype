@@ -23,8 +23,8 @@ return [
     
 
     // Algolia Frontend Search
-    'algolia/algolia-vue-instant-search' => ['template' => 'pages/algolia/search/algolia-vue-instant-search'],
-    'algolia/algolia-vanilla-search' => ['template' => 'pages/algolia/search/algolia-vanilla-search'],
+    'algolia/algolia-vue-instant-search' => ['template' => 'pages/algolia/algolia-vue-instant-search'],
+    'algolia/algolia-vanilla-search' => ['template' => 'pages/algolia/algolia-vanilla-search'],
 
     // Result Pages
     '/results/<entryType:.*>' => ['template' => 'pages/results/_index'],
