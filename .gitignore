@@ -1,0 +1,7 @@
+web/build
+web/mix-manifest.json
+node_modules
+vendor
+.env
+storage
+config/license.key
