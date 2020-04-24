@@ -1,7 +1,12 @@
 {% extends 'layout' %}
 
 
+
+
 {% block main %}
+
+    {# Track page view #}
+    {{ entry | views_work_image }}
 
     <a href="javascript:history.back()">Zurück</a>
 
@@ -32,5 +37,28 @@
         {% endfor %}
 
     </div>
+
+    <h2>Number of views</h2>
+    {% set views = craft.views_work.recording(entry) %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Total</th>
+                <td>{{ views.total }}</td>
+            </tr>
+            <tr>
+                <th>Month</th>
+                <td>{{ views.thisMonth }}</td>
+            </tr>
+            <tr>
+                <th>Week</th>
+                <td>{{ views.thisWeek }}</td>
+            </tr>
+            <tr>
+                <th>Today</th>
+                <td>{{ views.today }}</td>
+            </tr>
+        </tbody>
+    </table>
 
 {% endblock %}

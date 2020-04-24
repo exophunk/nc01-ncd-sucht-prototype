@@ -44,6 +44,10 @@
                     </a>
 
                     {{ craft.upvote.upvote(article.id) }}&nbsp;&nbsp;{{ craft.upvote.tally(article.id) }}
+
+                </div>
+                <div class="level-right">
+                    Search Score: {{ article.relevanceScore }}
                 </div>
             </nav>
         </div>
