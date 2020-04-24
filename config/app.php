@@ -23,4 +23,10 @@ return [
             'class' => 'thejoshsmith\fabpermissions\services\Fields',
         ],
     ],
+    'modules' => [
+        'relevance-score-module' => [
+            'class' => \modules\relevancescoremodule\RelevanceScoreModule::class,
+        ],
+    ],
+    'bootstrap' => ['relevance-score-module'],
 ];
