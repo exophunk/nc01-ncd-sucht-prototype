@@ -5,7 +5,7 @@
 </div>
 
 {% set search = craft.request.getParam('search') %}
-
+{% set orderBy = search ? 'score' : 'relevanceScore DESC' %}
 
 {% set articleTypes = craft.categories({
     group: 'articleTypes'
@@ -18,6 +18,7 @@
         section: 'articles',
         search: search,
         relatedTo: articleType,
+        orderBy: orderBy,
     }) %}
     
     {% if articles|length %} 

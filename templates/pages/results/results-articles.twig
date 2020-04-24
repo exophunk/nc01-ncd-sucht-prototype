@@ -5,6 +5,7 @@
 
 
 {% set search = craft.request.getParam('search') %}
+{% set orderBy = search ? 'score' : 'relevanceScore DESC' %}
 {% set catTerms = craft.request.getParam('categories') ? craft.request.getParam('categories')|split(',') : null %}
 {% set foundCategories = [] %}
 
@@ -30,6 +31,7 @@
     section: 'articles',
     search: search,
     relatedTo: foundCategories|length ? { targetElement: ['and']|merge(foundCategories)} : null,
+    orderBy: orderBy,
 }) %}
 
 {% if articles|length %} 
