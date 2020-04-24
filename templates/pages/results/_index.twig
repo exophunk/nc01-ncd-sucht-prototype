@@ -38,36 +38,8 @@
 		<strong>Result template determination</strong>: <code>{{ resultTemplate }}</code>
 	</div>
 	
-
 	<h2 class="title is-4">Results:</h2>
 
-
 	{% include resultTemplate %}
-
-
-	{# {% set articles = craft.entries({
-		search: query
-	}) %}
-	
-	{% set events = craft.entries({
-		search: query
-	}) %}
-
-	
-
-	{% if articles|length %} 
-		<h3 class="title is-3">Artikel</h3>
-		{% include "components/articlesList.twig" with { articles: articles } only %}
-	{% endif %}
-
-	<br><br>
-
-	{% if events|length %}
-		<h3 class="title is-3">Events</h3>
-		{% include "components/eventsList.twig" with { events: events } only %}
-	{% endif %} #}
-	
-
-
 
 {% endblock %}
